@@ -1,0 +1,40 @@
+.right-side a{
+    font-size: 15px;
+    padding: 8px 20px;
+    background-color: #ec4d37;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+.jumbotron{
+    background-color: rgb(228, 222, 222);
+    height: 40rem;
+}
+.main-conten{
+    position: relative;
+    top: 10vh;
+}
+h3{
+    text-align: center;
+}
+.btn-submit{
+  margin-left: 48rem;
+}
+.stardate{
+  margin-left: 17rem;
+}
+.rounded{
+  width: 100%;
+  height: 17rem;
+}
+.text-justify{
+  text-align: justify;
+}
+.tombol-button button{
+  width: 156px;
+}
+.sosmed a >img{
+  margin-right: 5px;
+}
+

@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <title>Task chapter 2</title>
+
+  <!-- Css External -->
+  <link rel="stylesheet" href="../public/style.css">
+</head>
+
+<body>
+
+  <!-- Awal Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="/public/assets/logo.png" alt="My logo">
+      </a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/home">Home</a>
+          </li>
+          {{#if isLogin}}
+          <li class="nav-item">
+            <a class="nav-link" href="/addmyProject">Add Project</a>
+          </li>
+          {{/if}}
+        </ul>
+      </div>
+      {{#if isLogin}}
+      <div class="d-flex">
+        <a href="#" style="text-decoration: none;">Hello, {{user.name}}</a>
+      </div>
+      <div class="d-flex right-side mx-2">
+        <a href="/logout">logout</a>
+      </div>
+      {{else}}
+      <div class="d-flex right-side mx-2">
+        <a href="/register">Register</a>
+      </div>
+      <div class="d-flex right-side">
+        <a href="/login">login</a>
+      </div>
+      {{/if}}
+      <div class="d-flex right-side">
+        <a href="/contact">Contact me</a>
+      </div>
+    </div>
+  </nav>
+  <!-- Akhir Navbar -->
+
+  {{#if messages.success}}
+  <div class="alert alert-success" role="alert">
+    {{messages.success}}
+  </div>
+  {{/if}}
+
+  <!-- Awal Jumbroton -->
+
+  <section class="jumbotron jumbotron-fluid">
+    <div class="mx-auto bg-white main-conten rounded shadow" style="width: 900px; height: 500px;">
+      <div class="d-flex justify-content-between">
+        <div class="jumbotron-left w-75 mt-5 ps-4">
+          <div>
+            <h5>Hy Welcome to my hut</h5>
+          </div>
+
+          <div>
+            <p style="text-align: justify;">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae corporis neque velit, ea ullam
+              totam cumque maxime perferendis quae adipisci, deleniti sit quo quod fuga quasi quibusdam atque similique!
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum ipsam ullam ipsum maxime est nesciunt
+              voluptatum molestias soluta. Sit quam laboriosam quasi natus necessitatibus aut, rem iusto modi assumenda
+              in!
+            </p>
+          </div>
+
+          <div class="d-flex mt-4">
+            <a href="">
+              <button type="button" class="btn btn-primary">Contact</button>
+            </a>
+
+            <p class="position-relative ms-4 mt-2">Download CV <img src="../public/assets/download.png" alt="download">
+            </p>
+          </div>
+
+          <div class="sosmed mt-4">
+            <a href="">
+              <img src="../public/assets/linkedin.png" alt="linkedin">
+            </a>
+            <a href="">
+              <img src="../public/assets/instagram.png" alt="instagram">
+            </a>
+            <a href="">
+              <img src="../public/assets/facebook.png" alt="facebook">
+            </a>
+            <a href="">
+              <img src="../public/assets/twitter.png" alt="twitter">
+            </a>
+
+          </div>
+        </div>
+
+        <div class="jumbutron-right mx-4 mt-4 w-50">
+          <div>
+            <img class="" src="../public/assets/code3.jfif" alt=""
+              style="width: 100%; height: 22rem; border-radius: 5px 5px 0 0;">
+          </div>
+          <div class="shadow text-center" style="height: 4rem; border-radius: 0 0 5px 5px;">
+            <label class="mt-1"><strong>Suwardi Hutagalung</strong></label>
+            <P style="font-size: 15px;">FullStact Developer</P>
+          </div>
+        </div>
+
+
+      </div>
+
+  </section>
+  <!-- akhir jumbroton -->
+
+  <h3 class="mt-4 mb-5">MY PROJECT</h3>
+  <section class="jumbotron-fluid d-flex flex-wrap">
+    {{#each blogs}}
+    <div class="mx-auto shadow p-3 mb-5 rounded" style="width: 350px; height: 570px;">
+      <div class="text-center mb-2">
+        <img src="/uploads/{{this.image}}" class="rounded" alt="">
+      </div>
+      <div>
+        <a href="/detail-project/{{this.id}}">
+          <h6>{{this.title}}</h6>
+        </a>
+      </div>
+      <div>
+        <p>{{this.post_age}}</p>
+      </div>
+      <div>
+        <p class="text-justify" style="font-size: 12px;">{{this.description}}</p>
+      </div>
+
+      <div class="mb-4">
+        <a href="">
+          <img src="../public/assets/js.png" alt="JavaScript">
+        </a>
+        <a href="">
+          <img src="../public/assets/nodejs.jpg" alt="nodejs">
+        </a>
+        <a href="">
+          <img src="../public/assets/react.png" alt="react">
+        </a>
+        <a href="">
+          <img src="../public/assets/typescript.png" alt="typescript">
+        </a>
+      </div>
+      {{#if isLogin}}
+      <div class="tombol-button">
+        <a href="/update-blog/{{this.id}}"><button type="button" class="btn btn-primary btn-sm">Edit</button></a>
+        <a href="/delete-card/{{this.id}}"><button type="button" class="btn btn-secondary btn-sm">Delete</button></a>
+      </div>
+      {{/if}}
+    </div>
+    {{/each}}
+
+  </section>
+
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
